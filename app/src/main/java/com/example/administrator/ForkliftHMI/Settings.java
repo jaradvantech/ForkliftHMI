@@ -1,4 +1,4 @@
-package com.example.administrator.PickingStation;
+package com.example.administrator.ForkliftHMI;
 
 import android.app.AlertDialog;
 import android.content.Context;
@@ -30,12 +30,12 @@ import java.util.List;
 
 import static android.app.Activity.RESULT_OK;
 
-import static com.example.administrator.PickingStation.SettingManager.getLanguage;
+import static com.example.administrator.ForkliftHMI.SettingManager.getLanguage;
 
 
-import static com.example.administrator.PickingStation.SettingManager.getMachineControllerAddress;
-import static com.example.administrator.PickingStation.SettingManager.setLanguage;
-import static com.example.administrator.PickingStation.SettingManager.setMachineControllerAddress;
+import static com.example.administrator.ForkliftHMI.SettingManager.getMachineControllerAddress;
+import static com.example.administrator.ForkliftHMI.SettingManager.setLanguage;
+import static com.example.administrator.ForkliftHMI.SettingManager.setMachineControllerAddress;
 
 
 public class Settings extends Fragment {

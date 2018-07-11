@@ -1,4 +1,4 @@
-package com.example.administrator.PickingStation;
+package com.example.administrator.ForkliftHMI;
 
 /*
  * RBS

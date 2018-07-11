@@ -1,4 +1,4 @@
-package com.example.administrator.PickingStation;
+package com.example.administrator.ForkliftHMI;
 
 import android.content.Intent;
 import android.graphics.Color;
@@ -8,8 +8,8 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageView;
 
-import static com.example.administrator.PickingStation.Util.inputToInt;
-import static com.example.administrator.PickingStation.Util.inputToString;
+import static com.example.administrator.ForkliftHMI.Util.inputToInt;
+import static com.example.administrator.ForkliftHMI.Util.inputToString;
 
 public class LogInActivity extends AppCompatActivity {
 

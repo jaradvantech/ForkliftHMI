@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package com.example.administrator.PickingStation;
+package com.example.administrator.ForkliftHMI;
 
 import android.graphics.drawable.GradientDrawable;
 import android.os.Bundle;

@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.example.administrator.PickingStation.MainActivity">
+    tools:context="com.example.administrator.ForkliftHMI.MainActivity">
 
     <android.support.design.widget.AppBarLayout
         android:layout_width="match_parent"
@@ -45,12 +45,11 @@
                 android:id="@+id/appbar_button_transparentButton"
                 android:layout_width="286dp"
                 android:layout_height="wrap_content"
-                android:layout_marginEnd="112dp"
+                android:layout_marginEnd="928dp"
                 android:visibility="invisible"
                 app:layout_constraintBottom_toBottomOf="@+id/appbar_imageView_connection"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toTopOf="@+id/appbar_imageView_connection"
-                app:layout_constraintVertical_bias="0.416" />
+                app:layout_constraintTop_toTopOf="@+id/appbar_imageView_connection" />
 
             <ImageView
                 android:id="@+id/appbar_imageView_connection"

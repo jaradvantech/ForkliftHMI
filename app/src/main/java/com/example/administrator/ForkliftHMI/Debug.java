@@ -1,4 +1,4 @@
-package com.example.administrator.PickingStation;
+package com.example.administrator.ForkliftHMI;
 
 import android.content.Context;
 import android.content.Intent;
@@ -21,8 +21,8 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import static android.app.Activity.RESULT_OK;
-import static com.example.administrator.PickingStation.Util.boolToString;
-import static com.example.administrator.PickingStation.Util.inputToInt;
+import static com.example.administrator.ForkliftHMI.Util.boolToString;
+import static com.example.administrator.ForkliftHMI.Util.inputToInt;
 
 public class Debug extends Fragment {
 

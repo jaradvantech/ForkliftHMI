@@ -1,4 +1,4 @@
-package com.example.administrator.PickingStation;
+package com.example.administrator.ForkliftHMI;
 
 import android.app.AlertDialog;
 import android.content.Context;
@@ -24,7 +24,7 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 
-import static com.example.administrator.PickingStation.Commands.CHAL;
+import static com.example.administrator.ForkliftHMI.Commands.CHAL;
 
 
 public class Alarms extends Fragment {

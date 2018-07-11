@@ -1,4 +1,4 @@
-package com.example.administrator.PickingStation;
+package com.example.administrator.ForkliftHMI;
 
 import android.content.Context;
 import android.content.Intent;
@@ -28,7 +28,7 @@ import org.json.JSONObject;
 import java.util.ArrayList;
 
 import static android.app.Activity.RESULT_OK;
-import static com.example.administrator.PickingStation.Commands.GDIS;
+import static com.example.administrator.ForkliftHMI.Commands.GDIS;
 
 public class DebugAdvancedOptions extends Fragment {
 

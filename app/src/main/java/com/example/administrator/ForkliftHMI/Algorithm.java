@@ -1,4 +1,4 @@
-package com.example.administrator.PickingStation;
+package com.example.administrator.ForkliftHMI;
 
 import android.app.AlertDialog;
 import android.content.Context;
@@ -22,7 +22,7 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import static com.example.administrator.PickingStation.Commands.ALGC;
+import static com.example.administrator.ForkliftHMI.Commands.ALGC;
 
 
 public class Algorithm extends Fragment {

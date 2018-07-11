@@ -1,4 +1,4 @@
-package com.example.administrator.PickingStation;
+package com.example.administrator.ForkliftHMI;
 
 import android.content.Context;
 import android.os.Bundle;
@@ -27,7 +27,7 @@ import org.json.JSONObject;
 import java.util.ArrayList;
 import java.util.List;
 
-import static com.example.administrator.PickingStation.BrickManager.getRaw;
+import static com.example.administrator.ForkliftHMI.BrickManager.getRaw;
 
 
 public class Editor extends Fragment {

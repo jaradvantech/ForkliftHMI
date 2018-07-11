@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.example.administrator.PickingStation.MachineCalibration">
+    tools:context="com.example.administrator.ForkliftHMI.MachineCalibration">
 
     <EditText
         android:id="@+id/calibration_edittext_arm1"

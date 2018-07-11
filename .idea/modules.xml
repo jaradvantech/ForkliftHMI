@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/PickingStation.iml" filepath="$PROJECT_DIR$/PickingStation.iml" />
+      <module fileurl="file://$PROJECT_DIR$/ForkliftHMI.iml" filepath="$PROJECT_DIR$/ForkliftHMI.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
     </modules>
   </component>

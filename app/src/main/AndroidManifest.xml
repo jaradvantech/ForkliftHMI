@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.administrator.PickingStation">
+    package="com.example.administrator.ForkliftHMI">
 
     <uses-permission android:name="android.permission.INTERNET" />
 
@@ -24,8 +24,8 @@
 
         <!-- RBS add splash screen -->
         <activity
-            android:name="com.example.administrator.PickingStation.SplashActivity"
-            android:label="Display4"
+            android:name="com.example.administrator.ForkliftHMI.SplashActivity"
+            android:label="ForkliftHMI"
             android:theme="@style/SplashTheme">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -34,12 +34,11 @@
             </intent-filter>
         </activity>
         <activity
-            android:name="com.example.administrator.PickingStation.MainActivity"
+            android:name="com.example.administrator.ForkliftHMI.MainActivity"
             android:theme="@style/AppTheme.NoActionBar"></activity>
 
-        <activity android:name="com.example.administrator.PickingStation.AskForIP"></activity>
-        <activity android:name="com.example.administrator.PickingStation.MachineCalibration"></activity>
-        <activity android:name="com.example.administrator.PickingStation.LogInActivity"></activity>
+        <activity android:name="com.example.administrator.ForkliftHMI.AskForIP"></activity>
+        <activity android:name="com.example.administrator.ForkliftHMI.LogInActivity"></activity>
 
     </application>
 

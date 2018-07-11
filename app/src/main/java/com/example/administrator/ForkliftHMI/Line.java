@@ -1,4 +1,4 @@
-package com.example.administrator.PickingStation;
+package com.example.administrator.ForkliftHMI;
 
 import android.animation.AnimatorSet;
 import android.animation.ObjectAnimator;
@@ -29,7 +29,7 @@ import java.util.ArrayList;
 
 import static android.support.animation.SpringForce.DAMPING_RATIO_NO_BOUNCY;
 import static android.support.animation.SpringForce.STIFFNESS_VERY_LOW;
-import static com.example.administrator.PickingStation.Commands.RPRV;
+import static com.example.administrator.ForkliftHMI.Commands.RPRV;
 
 //Pese a mis esfuerzos de adecentarla, esta clase es una chapuza, de principio a fin. firmado RBS
 

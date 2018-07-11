@@ -1,4 +1,4 @@
-package com.example.administrator.PickingStation;
+package com.example.administrator.ForkliftHMI;
 
 import android.util.Log;
 import java.io.BufferedReader;
@@ -10,7 +10,7 @@ import java.net.InetAddress;
 import java.net.InetSocketAddress;
 import java.net.Socket;
 import java.net.SocketTimeoutException;
-import static com.example.administrator.PickingStation.Commands.PING;
+import static com.example.administrator.ForkliftHMI.Commands.PING;
 
 
 public class TcpClient {
