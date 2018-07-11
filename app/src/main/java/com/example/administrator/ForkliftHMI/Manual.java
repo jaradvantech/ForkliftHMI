@@ -204,11 +204,11 @@ public class Manual extends Fragment {
             public void onClick( View view ) {
                 if(manual_GifimageView_line_wheel_Drawable.isPlaying()){
                     manual_GifimageView_line_wheel_Drawable.stop();
-                    manual_textView_line.setText("Line stoped");
+                    manual_textView_line.setText("Map stoped");
                     setLineMotor(false);
 
                 }else{
-                    manual_textView_line.setText("Line running!");
+                    manual_textView_line.setText("Map running!");
                     manual_GifimageView_line_wheel_Drawable.start();
                     setLineMotor(true);
 

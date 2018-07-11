@@ -32,7 +32,7 @@ import java.util.Locale;
 
 public class MainActivity extends AppCompatActivity
         implements
-        Line.OnFragmentInteractionListener,
+        Map.OnFragmentInteractionListener,
         Algorithm.OnFragmentInteractionListener,
         Editor.OnFragmentInteractionListener,
         Manual.OnFragmentInteractionListener,
@@ -40,11 +40,10 @@ public class MainActivity extends AppCompatActivity
         DebugAdvancedOptions.OnFragmentInteractionListener,
         Alarms.OnFragmentInteractionListener,
         Settings.OnFragmentInteractionListener,
-        MachineCalibration.OnFragmentInteractionListener,
         NavigationView.OnNavigationItemSelectedListener {
 
     private TcpClient mTcpClient;
-    private Line line;
+    private Map line;
     private Algorithm algorithm;
     private Editor editor;
     private Logs logs;
@@ -54,15 +53,12 @@ public class MainActivity extends AppCompatActivity
     private Settings settings;
     private Loading loading;
     private Alarms alarms;
-    private MachineCalibration machineCalibration;
     private int previous_id = R.id.opt_loading;
     private AsyncTask<String, String, TcpClient> networkConnection;
     private final int TRANSITION_TIME = 400;
     private Button appbarTransparentButton;
     private TextView title;
     private ImageView appbar_connection;
-    private ImageView manipulatorAlarmIcon[] = new ImageView[5];
-    private ImageView equipmentAlarmIcon;
     private String CurrentLanguage = "en"; //default
     private NavigationView navigationView;
     private DrawerLayout drawer;
@@ -92,13 +88,7 @@ public class MainActivity extends AppCompatActivity
         appbarTransparentButton.setVisibility(View.VISIBLE);
         appbarTransparentButton.setBackgroundColor(Color.TRANSPARENT);
         appbar_connection = (ImageView) findViewById(R.id.appbar_imageView_connection);
-        manipulatorAlarmIcon[0] = (ImageView) findViewById(R.id.appbar_imageView_arm1);
-        manipulatorAlarmIcon[1] = (ImageView) findViewById(R.id.appbar_imageView_arm2);
-        manipulatorAlarmIcon[2] = (ImageView) findViewById(R.id.appbar_imageView_arm3);
-        manipulatorAlarmIcon[3] = (ImageView) findViewById(R.id.appbar_imageView_arm4);
-        manipulatorAlarmIcon[4] = (ImageView) findViewById(R.id.appbar_imageView_arm5);
-        equipmentAlarmIcon = (ImageView) findViewById(R.id.appbar_imageview_equipment);
-        line = new Line();
+        line = new Map();
         algorithm = new Algorithm();
         editor = new Editor();
         logs = new Logs();
@@ -108,7 +98,6 @@ public class MainActivity extends AppCompatActivity
         settings = new Settings();
         loading = new Loading();
         alarms = new Alarms();
-        machineCalibration = new MachineCalibration();
 
         //Replace built-in title with custom title
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
@@ -138,7 +127,7 @@ public class MainActivity extends AppCompatActivity
         manager.beginTransaction().replace(R.id.holder_settings, settings, settings.getTag()).commit();
         manager.beginTransaction().replace(R.id.holder_loading, loading, loading.getTag()).commit();
         manager.beginTransaction().replace(R.id.holder_alarms, alarms, alarms.getTag()).commit();
-        manager.beginTransaction().replace(R.id.holder_machine_calibration, machineCalibration, machineCalibration.getTag()).commit();
+
 
         //On any icon pressed in the Appbar, switch to alarm view.
         appbarTransparentButton.setOnClickListener(new View.OnClickListener()
@@ -151,6 +140,15 @@ public class MainActivity extends AppCompatActivity
         });
 
         startNetworking();
+
+
+        //skip for now
+        Handler handlerAdvance = new Handler();
+        handlerAdvance.postDelayed(new Runnable() {
+            public void run() {onLoadingFinished();
+            }
+        }, 500);
+
     }
 
     @Override
@@ -165,7 +163,7 @@ public class MainActivity extends AppCompatActivity
         if (drawer.isDrawerOpen(GravityCompat.START)) {
             drawer.closeDrawer(GravityCompat.START);
 
-         //Otherwise, go to Line Status
+         //Otherwise, go to Map Status
         } else {
             //If in sub-screen, return to main screen
             if(previous_id == R.id.opt_debug_advanced) switchToLayout(R.id.nav_debug);
@@ -190,7 +188,7 @@ public class MainActivity extends AppCompatActivity
 
     /*
      *  This will be called when the connection with the machine has been
-     *  stablished. Desired behavior is switching to Line status screen.
+     *  stablished. Desired behavior is switching to Map status screen.
      */
     public void onLoadingFinished() {
         switchToLayout(R.id.nav_lines);
@@ -212,7 +210,6 @@ public class MainActivity extends AppCompatActivity
             case R.id.nav_debug: debug.whenLeavingFragment(); break;
             case R.id.opt_debug_advanced: debug_advanced.whenLeavingFragment(); break;
             case R.id.nav_settings: settings.whenLeavingFragment(); break;
-            case R.id.opt_calibration: machineCalibration.whenLeavingFragment(); break;
         }
         switch (new_id) {
             case R.id.nav_lines:  line.whenEnteringFragment(); break;
@@ -224,7 +221,6 @@ public class MainActivity extends AppCompatActivity
             case R.id.nav_debug: debug.whenEnteringFragment(); break;
             case R.id.opt_debug_advanced: debug_advanced.whenEnteringFragment(); break;
             case R.id.nav_settings: settings.whenEnteringFragment(); break;
-            case R.id.opt_calibration: machineCalibration.whenEnteringFragment(); break;
         }
 
         //Select layouts to change
@@ -419,19 +415,17 @@ public class MainActivity extends AppCompatActivity
             editor.onTcpReply(receivedString);
 
         } else if (cmdID.equals("RPRV")) {
-            line.updateLineBrickInfo(receivedString);
 
         } else if (cmdID.equals("PGSI")) {
             debug.updateDebugData(receivedString);
 
         } else if (cmdID.equals("PWDA")) {
             manual.serverResponse(receivedString);
-            machineCalibration.onServerResponse(receivedString);
+
 
         } else if (cmdID.equals("CHAL")) {
             //Check for new alarms
             alarms.updateAlarms(alarms.parseAlarmCMD(receivedString));
-            updateAppbarAlarms(alarms.getCurrentArmState());
 
         } else if (cmdID.equals("GDIS")) {
             debug_advanced.parseInternalStateDebugData(receivedString);
@@ -440,7 +434,7 @@ public class MainActivity extends AppCompatActivity
             settings.onSettingsRetrieved(receivedString);
 
         } else if (cmdID.equals("ALGC")) {
-            algorithm.onAlgorithmConfigurationRetrieved(receivedString);
+
 
         } else if (cmdID.equals("PING")) {
             //Log.d("PING", "ack");
@@ -451,27 +445,6 @@ public class MainActivity extends AppCompatActivity
     public void onSendCommand( String command ) {
         if(mTcpClient!=null) {
             mTcpClient.sendMessage(command);
-        }
-    }
-
-
-    /*****************************************************
-     *                            --APP BAR ICONS--
-     *****************************************************/
-    public void updateAppbarAlarms(Boolean[] armState) {
-        if(armState[0] == true) {
-            equipmentAlarmIcon.setColorFilter(Color.rgb(255, 0, 0), android.graphics.PorterDuff.Mode.MULTIPLY);
-        } else {
-            equipmentAlarmIcon.clearColorFilter();
-        }
-
-        //Armstate indexes 1 to 5, manipulatorAlarmIcon 0 to 4
-        for(int i=1; i<6; i++) {
-            if(armState[i] == true) {
-                manipulatorAlarmIcon[i-1].setColorFilter(Color.rgb(255, 0, 0), android.graphics.PorterDuff.Mode.MULTIPLY);
-            } else {
-                manipulatorAlarmIcon[i-1].clearColorFilter();
-            }
         }
     }
 

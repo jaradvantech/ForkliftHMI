@@ -1,0 +1,54 @@
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.example.administrator.ForkliftHMI.Map">
+
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical" />
+    </ScrollView>
+
+    <android.support.constraint.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <ImageView
+            android:id="@+id/map_imageView_background"
+            android:layout_width="1282dp"
+            android:layout_height="wrap_content"
+            android:src="@mipmap/hgihdens"
+            tools:layout_editor_absoluteX="0dp"
+            tools:layout_editor_absoluteY="0dp" />
+
+        <SeekBar
+            android:id="@+id/map_seekBar_scale"
+            style="@style/Widget.AppCompat.SeekBar.Discrete"
+            android:layout_width="156dp"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="32dp"
+            android:layout_marginEnd="104dp"
+            android:max="2"
+            android:progress="0"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent" />
+
+        <TextView
+            android:id="@+id/map_textView_scaleText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="4dp"
+            android:text="Escala:"
+            android:textSize="@dimen/text_default"
+            app:layout_constraintBottom_toTopOf="@+id/map_seekBar_scale"
+            app:layout_constraintStart_toStartOf="@+id/map_seekBar_scale" />
+    </android.support.constraint.ConstraintLayout>
+
+</FrameLayout>

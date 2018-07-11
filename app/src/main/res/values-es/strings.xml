@@ -14,7 +14,7 @@
     <!-- Loading Screen -->
     <string name="Connectingtoserver">Conectando al servidor...</string>
 
-    <!-- Line state -->
+    <!-- Map state -->
     <string name="At">En:</string>
     <string name="To">A:</string>
 

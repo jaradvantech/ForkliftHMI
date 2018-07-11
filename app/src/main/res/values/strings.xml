@@ -11,7 +11,7 @@
     <!-- Loading Screen -->
     <string name="Connectingtoserver">Connecting to server...</string>
 
-    <!-- Line state -->
+    <!-- Map state -->
     <string name="At">At:</string>
     <string name="To">To:</string>
 
@@ -22,16 +22,17 @@
     <string name="Warning">Warning</string>
     <string name="saveconfig">Save Configuration</string>
 
+
     <!-- Navigation Menu -->
-    <string name="Loading">Loading</string>
-    <string name="LineState">Line Status</string>
-    <string name="AlgorithmConfiguration">Algorithm configuration</string>
-    <string name="PalletEditor">Pallet editor</string>
-    <string name="ProductionLogs">Production logs</string>
-    <string name="Alarms">Alarms</string>
-    <string name="ManualControl">Manual control</string>
-    <string name="Debug">DEBUG SCREEN</string>
-    <string name="Settings">Settings</string>
+    <string name="Loading">Conectando</string>
+    <string name="LineState">Vista actual</string>
+    <string name="AlgorithmConfiguration">Gestor de Carretillas</string>
+    <string name="PalletEditor">Creación de mapas</string>
+    <string name="ProductionLogs">Historial</string>
+    <string name="Alarms">Alarmas</string>
+    <string name="ManualControl">Control Manual</string>
+    <string name="Debug">DEBUG</string>
+    <string name="Settings">Configuración</string>
 
     <!-- Manual Control-->
     <string name="Manualmode">Manual Mode</string>

@@ -7,37 +7,37 @@
         <item
             android:id="@+id/nav_lines"
             android:checked="false"
-            android:icon="@mipmap/conveyor"
-            android:title="@string/LineState" />
+            android:icon="@mipmap/placeholder"
+            android:title="Vista actual" />
         <item
             android:id="@+id/nav_algorithm"
-            android:icon="@mipmap/color_wheel"
-            android:title="@string/AlgorithmConfiguration" />
+            android:icon="@mipmap/forklift_icon"
+            android:title="Gestor de Carretillas" />
         <item
             android:id="@+id/nav_editor"
-            android:icon="@mipmap/layers"
-            android:title="@string/PalletEditor" />
+            android:icon="@mipmap/map"
+            android:title="Creación de mapas" />
         <item
             android:id="@+id/nav_logs"
             android:icon="@mipmap/log_file_format"
-            android:title="@string/ProductionLogs" />
+            android:title="Historial" />
 
         <item
             android:id="@+id/nav_alarms"
             android:icon="@mipmap/alarm"
-            android:title="@string/Alarms" />
+            android:title="Alarmas" />
         <item
             android:id="@+id/nav_manual"
             android:icon="@mipmap/one_finger"
-            android:title="@string/ManualControl" />
+            android:title="Control Manual" />
         <item
             android:id="@+id/nav_debug"
             android:icon="@drawable/ic_menu_manage"
-            android:title="@string/Debug" />
+            android:title="DEBUG" />
         <item
             android:id="@+id/nav_settings"
             android:icon="@mipmap/settings"
-            android:title="@string/Settings" />
+            android:title="Configuración" />
     </group>
 
 
