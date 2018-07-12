@@ -3,31 +3,17 @@ package com.example.administrator.ForkliftHMI;
 import android.content.Context;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentManager;
-import android.support.v4.app.FragmentStatePagerAdapter;
-import android.support.v4.view.PagerAdapter;
-import android.support.v4.view.ViewPager;
-import android.support.v4.widget.SwipeRefreshLayout;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.AdapterView;
-import android.widget.Button;
 import android.widget.ListView;
-import android.widget.TextView;
 import android.widget.ToggleButton;
-import com.bartoszlipinski.flippablestackview.FlippableStackView;
-import com.bartoszlipinski.flippablestackview.StackPageTransformer;
-
-import org.json.JSONArray;
-import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
 import java.util.List;
 
-import static com.example.administrator.ForkliftHMI.BrickManager.getRaw;
 
 
 public class Editor extends Fragment {
@@ -50,6 +36,8 @@ public class Editor extends Fragment {
     @Override
     public View onCreateView( LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState ) {
         view = inflater.inflate(R.layout.fragment_editor, container, false);
+
+        createSideMenu();
 
         return view;
     }
@@ -96,7 +84,19 @@ public class Editor extends Fragment {
         }
     }
 
+    private void createSideMenu() {
+        ArrayList tools = new ArrayList<EditorTool>();
+        tools.add(new EditorTool("Zona de exclusión", R.mipmap.keepout_transp));
+        tools.add(new EditorTool("Delimitador", R.mipmap.brickwall));
+        tools.add(new EditorTool("Punto de control", R.mipmap.trafficlight));
+        tools.add(new EditorTool("Punto de descarga", R.mipmap.palleticon));
+        tools.add(new EditorTool("Punto de carga", R.mipmap.flag));
 
+        ListView editorList = view.findViewById(R.id.editor_listView_tools);
+
+        EditorToolsListAdapter adapter = new EditorToolsListAdapter(getActivity(), tools);
+        editorList.setAdapter(adapter);
+    }
 
     public void whenEnteringFragment() {
 

@@ -93,7 +93,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="8dp"
-                android:text="Machine\ncalibration"
+                android:text="Calibración\ndel mapa"
                 android:textAlignment="textStart"
                 app:layout_constraintBottom_toBottomOf="@+id/settings_ImageView_calibration"
                 app:layout_constraintStart_toEndOf="@+id/settings_ImageView_calibration" />
@@ -111,7 +111,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="8dp"
-                android:text="Reset to\ndefault"
+                android:text="Deshacer\nconfiguración"
                 app:layout_constraintBottom_toBottomOf="@+id/settings_ImageView_factoryReset"
                 app:layout_constraintStart_toEndOf="@+id/settings_ImageView_factoryReset" />
 

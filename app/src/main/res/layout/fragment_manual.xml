@@ -29,8 +29,8 @@
             android:id="@+id/manual_imageView_stop"
             android:layout_width="103dp"
             android:layout_height="56dp"
-            android:layout_marginBottom="136dp"
-            android:layout_marginEnd="120dp"
+            android:layout_marginBottom="252dp"
+            android:layout_marginEnd="284dp"
             android:background="@mipmap/box2"
             android:backgroundTint="@color/colorYellow"
             android:backgroundTintMode="multiply"
@@ -131,66 +131,29 @@
             app:layout_constraintTop_toBottomOf="@+id/manual_imageView_stop" />
 
         <pl.droidsonroids.gif.GifImageView
-            android:id="@+id/manual_GifimageView_sucker_animation"
-            android:layout_width="182dp"
-            android:layout_height="266dp"
-            android:layout_marginStart="8dp"
-            android:layout_marginTop="14dp"
-            android:background="@mipmap/ventosa_cut_airflow"
-            android:backgroundTint="@color/colorPrimaryDark"
-            android:scaleType="fitXY"
-            android:visibility="invisible"
-            app:layout_constraintEnd_toEndOf="@+id/manual_imageView_sucker"
-            app:layout_constraintStart_toStartOf="@+id/manual_imageView_sucker"
-            app:layout_constraintTop_toTopOf="@+id/manual_imageView_sucker" />
-
-        <ImageView
-            android:id="@+id/manual_imageView_sucker"
-            android:layout_width="140dp"
-            android:layout_height="240dp"
-            android:layout_marginStart="164dp"
-            android:layout_marginTop="3dp"
-            android:clickable="true"
-            android:scaleType="fitXY"
-            android:src="@mipmap/sucker_cut"
-            android:visibility="visible"
-            app:layout_constraintStart_toStartOf="@+id/manual_imageView_zoomer"
-            app:layout_constraintTop_toTopOf="@+id/manual_imageView_zoomer" />
-
-        <pl.droidsonroids.gif.GifImageView
             android:id="@+id/manual_GifimageView_line_wheel"
             android:layout_width="40dp"
             android:layout_height="40dp"
-            android:layout_marginStart="@dimen/activity_left_margin"
+            android:layout_marginStart="872dp"
             android:background="@mipmap/animated_wheel"
             android:scaleType="fitXY"
             android:visibility="visible"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.7" />
-
-        <Switch
-            android:id="@+id/manual_switch_mode"
-            android:layout_width="wrap_content"
-            android:layout_height="32dp"
-            android:layout_marginBottom="8dp"
-            android:text="@string/Manualmode"
-            android:textSize="19sp"
-            app:layout_constraintBottom_toTopOf="@+id/manual_reset"
-            app:layout_constraintEnd_toEndOf="@+id/manual_reset"
-            app:layout_constraintStart_toStartOf="@+id/manual_reset" />
+            app:layout_constraintVertical_bias="0.113" />
 
         <TextView
             android:id="@+id/debug_currentArm"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/activity_top_margin"
+            android:layout_marginTop="48dp"
             android:text="1"
             android:textColor="@color/colorPrimary"
             android:textSize="63sp"
             android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.307"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -226,52 +189,6 @@
             app:layout_constraintStart_toEndOf="@+id/debug_currentArm"
             app:layout_constraintTop_toTopOf="@+id/debug_currentArm" />
 
-        <ImageView
-            android:id="@+id/manual_imageView_line"
-            android:layout_width="1233dp"
-            android:layout_height="559dp"
-            android:clickable="false"
-            android:scaleType="fitXY"
-            android:src="@mipmap/cinta112"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintRight_toRightOf="parent" />
-
-        <Button
-            android:id="@+id/manual_reset"
-            android:layout_width="162dp"
-            android:layout_height="57dp"
-            android:layout_marginBottom="68dp"
-            android:layout_marginEnd="384dp"
-            android:text="RESET ALL"
-            android:textSize="19sp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent" />
-
-        <ImageView
-            android:id="@+id/manual_imageView_zoomer"
-            android:layout_width="806dp"
-            android:layout_height="312dp"
-            android:layout_marginEnd="204dp"
-            android:layout_marginTop="32dp"
-            android:scaleType="fitXY"
-            android:src="@mipmap/bocadillo"
-            android:visibility="visible"
-            app:layout_constraintEnd_toEndOf="@+id/manual_imageView_arm"
-            app:layout_constraintTop_toTopOf="parent" />
-
-        <ImageView
-            android:id="@+id/manual_imageView_arm"
-            android:layout_width="234dp"
-            android:layout_height="234dp"
-            android:layout_marginEnd="140dp"
-            android:scaleType="fitXY"
-            android:src="@mipmap/manual_manipulator"
-            android:visibility="visible"
-            app:layout_constraintEnd_toEndOf="@+id/manual_imageView_line"
-            app:layout_constraintTop_toTopOf="parent" />
-
         <TextView
             android:id="@+id/manual_textView_line"
             android:layout_width="wrap_content"
@@ -280,7 +197,7 @@
             android:layout_marginStart="8dp"
             android:layout_marginTop="8dp"
             android:cursorVisible="false"
-            android:text="Line Stopped"
+            android:text="提前：停了"
             android:textSize="19sp"
             android:visibility="visible"
             app:layout_constraintBottom_toBottomOf="@+id/manual_GifimageView_line_wheel"
@@ -288,17 +205,14 @@
             app:layout_constraintTop_toTopOf="@+id/manual_GifimageView_line_wheel" />
 
         <ImageView
-            android:id="@+id/manual_imageView_motor"
-            android:layout_width="81dp"
-            android:layout_height="52dp"
-            android:layout_marginBottom="24dp"
-            android:layout_marginStart="140dp"
-            android:clickable="true"
-            android:scaleType="fitXY"
-            android:src="@mipmap/motor111"
-            android:visibility="visible"
-            app:layout_constraintBottom_toBottomOf="@+id/manual_imageView_line"
-            app:layout_constraintStart_toStartOf="@+id/manual_imageView_line" />
+            android:id="@+id/imageView"
+            android:layout_width="400dp"
+            android:layout_height="400dp"
+            android:layout_marginStart="188dp"
+            android:layout_marginTop="172dp"
+            android:src="@mipmap/forklift_trans"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
     </android.support.constraint.ConstraintLayout>
 

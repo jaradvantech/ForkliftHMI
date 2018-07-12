@@ -37,7 +37,6 @@ public class MainActivity extends AppCompatActivity
         Editor.OnFragmentInteractionListener,
         Manual.OnFragmentInteractionListener,
         Debug.OnFragmentInteractionListener,
-        DebugAdvancedOptions.OnFragmentInteractionListener,
         Alarms.OnFragmentInteractionListener,
         Settings.OnFragmentInteractionListener,
         NavigationView.OnNavigationItemSelectedListener {
@@ -49,14 +48,12 @@ public class MainActivity extends AppCompatActivity
     private Logs logs;
     private Manual manual;
     private Debug debug;
-    private DebugAdvancedOptions debug_advanced;
     private Settings settings;
     private Loading loading;
     private Alarms alarms;
     private int previous_id = R.id.opt_loading;
     private AsyncTask<String, String, TcpClient> networkConnection;
     private final int TRANSITION_TIME = 400;
-    private Button appbarTransparentButton;
     private TextView title;
     private ImageView appbar_connection;
     private String CurrentLanguage = "en"; //default
@@ -78,15 +75,9 @@ public class MainActivity extends AppCompatActivity
         correctDisplayMetrics();
         setContentView(R.layout.activity_main);
         SettingManager.initSettingManager(this);
-        BrickManager.initBrickManager(this);
 
         navigationView = (NavigationView) findViewById(R.id.nav_view);
         setGUILanguage();
-
-        //Make transparent so when user press any icon view switches to alarms
-        appbarTransparentButton = (Button) findViewById(R.id.appbar_button_transparentButton);
-        appbarTransparentButton.setVisibility(View.VISIBLE);
-        appbarTransparentButton.setBackgroundColor(Color.TRANSPARENT);
         appbar_connection = (ImageView) findViewById(R.id.appbar_imageView_connection);
         line = new Map();
         algorithm = new Algorithm();
@@ -94,7 +85,6 @@ public class MainActivity extends AppCompatActivity
         logs = new Logs();
         manual = new Manual();
         debug = new Debug();
-        debug_advanced = new DebugAdvancedOptions();
         settings = new Settings();
         loading = new Loading();
         alarms = new Alarms();
@@ -123,23 +113,13 @@ public class MainActivity extends AppCompatActivity
         manager.beginTransaction().replace(R.id.holder_logs, logs, logs.getTag()).commit();
         manager.beginTransaction().replace(R.id.holder_manual, manual, manual.getTag()).commit();
         manager.beginTransaction().replace(R.id.holder_debug, debug, debug.getTag()).commit();
-        manager.beginTransaction().replace(R.id.holder_debug_advanced, debug_advanced, debug_advanced.getTag()).commit();
         manager.beginTransaction().replace(R.id.holder_settings, settings, settings.getTag()).commit();
         manager.beginTransaction().replace(R.id.holder_loading, loading, loading.getTag()).commit();
         manager.beginTransaction().replace(R.id.holder_alarms, alarms, alarms.getTag()).commit();
 
 
-        //On any icon pressed in the Appbar, switch to alarm view.
-        appbarTransparentButton.setOnClickListener(new View.OnClickListener()
-        {
-            @Override
-            public void onClick(View v)
-            {
-                switchToLayout(R.id.nav_alarms);
-            }
-        });
 
-        startNetworking();
+        //startNetworking();
 
 
         //skip for now
@@ -208,7 +188,6 @@ public class MainActivity extends AppCompatActivity
             case R.id.nav_alarms: alarms.whenLeavingFragment(); break;
             case R.id.nav_manual: manual.whenLeavingFragment(); break;
             case R.id.nav_debug: debug.whenLeavingFragment(); break;
-            case R.id.opt_debug_advanced: debug_advanced.whenLeavingFragment(); break;
             case R.id.nav_settings: settings.whenLeavingFragment(); break;
         }
         switch (new_id) {
@@ -219,7 +198,6 @@ public class MainActivity extends AppCompatActivity
             case R.id.nav_alarms: alarms.whenEnteringFragment(); break;
             case R.id.nav_manual: manual.whenEnteringFragment(); break;
             case R.id.nav_debug: debug.whenEnteringFragment(); break;
-            case R.id.opt_debug_advanced: debug_advanced.whenEnteringFragment(); break;
             case R.id.nav_settings: settings.whenEnteringFragment(); break;
         }
 
@@ -428,10 +406,10 @@ public class MainActivity extends AppCompatActivity
             alarms.updateAlarms(alarms.parseAlarmCMD(receivedString));
 
         } else if (cmdID.equals("GDIS")) {
-            debug_advanced.parseInternalStateDebugData(receivedString);
+
 
         } else if (cmdID.equals("GCFG")) {
-            settings.onSettingsRetrieved(receivedString);
+
 
         } else if (cmdID.equals("ALGC")) {
 

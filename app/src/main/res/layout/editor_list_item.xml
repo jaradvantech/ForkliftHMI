@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+  <ImageView
+      android:id="@+id/EditorTool_imageView_icon"
+      android:layout_width="100dp"
+      android:layout_height="100dp"
+      android:layout_centerHorizontal="true"
+      android:layout_centerVertical="true"
+      app:srcCompat="@mipmap/palleticon" />
+
+  <Space
+      android:id="@+id/EditorTool_spaceTop"
+      android:layout_width="wrap_content"
+      android:layout_height="16dp"
+      android:layout_above="@+id/EditorTool_imageView_icon"
+      android:layout_centerHorizontal="true" />
+
+  <TextView
+      android:id="@+id/EditorTool_textView_caption"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:layout_below="@+id/EditorTool_spaceBottom"
+      android:layout_centerHorizontal="true"
+      android:text="TextView"
+      android:textColor="@color/colorWhite"
+      android:textSize="24sp" />
+
+  <Space
+      android:id="@+id/EditorTool_spaceBottom"
+      android:layout_width="wrap_content"
+      android:layout_height="20dp"
+      android:layout_below="@+id/EditorTool_imageView_icon"
+      android:layout_centerHorizontal="true" />
+
+</RelativeLayout>

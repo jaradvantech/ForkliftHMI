@@ -40,6 +40,10 @@
         <activity android:name="com.example.administrator.ForkliftHMI.AskForIP"></activity>
         <activity android:name="com.example.administrator.ForkliftHMI.LogInActivity"></activity>
 
+        <meta-data
+            android:name="preloaded_fonts"
+            android:resource="@array/preloaded_fonts" />
+
     </application>
 
 </manifest>

@@ -120,6 +120,8 @@ public class Settings extends Fragment {
             }
         });
 
+        drawFakeSettings();
+
         return finalView;
     }
 
@@ -175,43 +177,16 @@ public class Settings extends Fragment {
         Toast.makeText(getActivity().getBaseContext(), "Configuration saved", Toast.LENGTH_SHORT).show(); //RBS TODO STRINGS
     }
 
-    /*
-     * To ensure that the local settings are synchronized with the settings
-     * stored in the machine, these will be enquired before allowing the user
-     * to make any changes.
-     */
-    public void retrieveSettings() {
-        try {
-            JSONObject JSONOutput = new JSONObject();
-            JSONOutput.put("command_ID", "GCFG");
-            mFragmentInteraction.onSendCommand(JSONOutput + "\r\n");
-        } catch(JSONException exc) {
-            Log.d("JSON exception", exc.getMessage());
-        }
-    }
 
-    public void onSettingsRetrieved(String CMD) {
-        try {
-            JSONObject JSONparser = new JSONObject(CMD);
-            int totalRFIDServers = JSONparser.getInt("RFID_servers");
-            String PLCAddress = JSONparser.getString("PLC_address");
-            JSONArray RFIDServers = JSONparser.getJSONArray("RFID_addresses"); //This string is another JSON containing both, ip and port.
-            JSONArray RFIDPorts = JSONparser.getJSONArray("RFID_ports"); //This string is another JSON containing both, ip and port.
-            //Load these settings into an array
-            currentSettings.clear();
-            currentSettings.add(getMachineControllerAddress());
-            currentSettings.add(new IPsetting("PLC Address", PLCAddress, "00102"));
-            for(int i=0; i<totalRFIDServers; i++) {
-                if(i<RFIDPorts.length())
-                    currentSettings.add(new IPsetting("RFID server " + (i + 1), RFIDServers.getString(i), RFIDPorts.getString(i)));
-                else
-                    currentSettings.add(new IPsetting("RFID server " + (i + 1), "", ""));
-            }
-            listAdapter.notifyDataSetChanged();
 
-        } catch (Exception jsonExc) {
-            Log.e("JSON Exception", "onSettingsRetrieved():" + jsonExc.getMessage());
-        }
+    public void drawFakeSettings() {
+        currentSettings.clear();
+        currentSettings.add(new IPsetting("Servidor", "000.000.000.000", "01111"));
+        currentSettings.add(new IPsetting("Carretilla 1", "152.235.265.11", "65565"));
+        currentSettings.add(new IPsetting("Carretilla 2", "152.235.265.12", "65565"));
+        currentSettings.add(new IPsetting("Carretilla 3", "152.235.265.13", "65565"));
+        currentSettings.add(new IPsetting("Carretilla 4", "152.235.265.14", "65565"));
+        listAdapter.notifyDataSetChanged();
     }
 
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
@@ -328,7 +303,7 @@ public class Settings extends Fragment {
     }
 
     public void whenEnteringFragment() {
-        retrieveSettings();
+
     }
 
     public void whenLeavingFragment() {
@@ -342,22 +317,11 @@ public class Settings extends Fragment {
      * This will avoid conflicts. Remove everything except server IP
      */
     public void onLostConnection() {
-        while(currentSettings.size() > 1) {
-            currentSettings.remove(currentSettings.size()-1);
-        }
-        listAdapter.notifyDataSetChanged();
+
     }
 
     public void onEstablishedConnection() {
-        Handler mHandler = new Handler();
-        mHandler.postDelayed(new Runnable() {
-            public void run() {
-                //Run 500ms after in case the server is just started
-                //and not ready yet for answering commands (it happens.)
-                //RBS TODO yes, not the most elegant solution...
-                retrieveSettings();
-            }
-        }, 500);
+
     }
 
 }

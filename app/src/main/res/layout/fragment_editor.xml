@@ -25,21 +25,169 @@
             app:layout_constraintVertical_bias="0.0" />
 
         <ImageView
-            android:id="@+id/editor_imageView_toolbarBackground"
-            android:layout_width="262dp"
-            android:layout_height="800dp"
-            android:scaleType="centerCrop"
-            android:src="@mipmap/blueprint"
-            app:layout_constraintEnd_toEndOf="parent"
+            android:id="@+id/editor_imageView_column1"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:layout_marginStart="316dp"
+            android:src="@mipmap/keepout_transp"
+            app:layout_constraintStart_toEndOf="@+id/editor_imageView_column2"
+            app:layout_constraintTop_toTopOf="@+id/editor_imageView_column2" />
+
+        <ImageView
+            android:id="@+id/editor_imageView_column2"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:layout_marginStart="208dp"
+            android:layout_marginTop="220dp"
+            android:src="@mipmap/keepout_transp"
+            app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
         <ImageView
+            android:id="@+id/editor_imageView_column3"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:layout_marginTop="220dp"
+            android:src="@mipmap/keepout_transp"
+            app:layout_constraintEnd_toEndOf="@+id/editor_imageView_column1"
+            app:layout_constraintTop_toBottomOf="@+id/editor_imageView_column1" />
+
+        <ImageView
+            android:id="@+id/editor_imageView_wall1"
+            android:layout_width="6dp"
+            android:layout_height="135dp"
+            android:layout_marginStart="176dp"
+            android:layout_marginTop="530dp"
+            android:scaleType="fitXY"
+            android:src="@mipmap/wall"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <ImageView
+            android:id="@+id/editor_imageView_wall7"
+            android:layout_width="6dp"
+            android:layout_height="125dp"
+            android:layout_marginStart="84dp"
+            android:layout_marginTop="410dp"
+            android:scaleType="fitXY"
+            android:src="@mipmap/wall"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <ImageView
+            android:id="@+id/editor_imageView_wall4"
+            android:layout_width="6dp"
+            android:layout_height="120dp"
+            android:layout_marginStart="836dp"
+            android:layout_marginTop="24dp"
+            android:scaleType="fitXY"
+            android:src="@mipmap/wall"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <ImageView
+            android:id="@+id/editor_imageView_wall3"
+            android:layout_width="6dp"
+            android:layout_height="392dp"
+            android:layout_marginStart="28dp"
+            android:layout_marginTop="24dp"
+            android:scaleType="fitXY"
+            android:src="@mipmap/wall"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <ImageView
+            android:id="@+id/editor_imageView_wall"
+            android:layout_width="58dp"
+            android:layout_height="6dp"
+            android:layout_marginStart="32dp"
+            android:layout_marginTop="410dp"
+            android:scaleType="fitXY"
+            android:src="@mipmap/wall"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <ImageView
+            android:id="@+id/editor_imageView_wall5"
+            android:layout_width="100dp"
+            android:layout_height="6dp"
+            android:layout_marginStart="836dp"
+            android:layout_marginTop="144dp"
+            android:scaleType="fitXY"
+            android:src="@mipmap/wall"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <ImageView
+            android:id="@+id/editor_imageView_wall2"
+            android:layout_width="95dp"
+            android:layout_height="6dp"
+            android:layout_marginStart="84dp"
+            android:layout_marginTop="530dp"
+            android:scaleType="fitXY"
+            android:src="@mipmap/wall"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <ImageView
+            android:id="@+id/editor_imageView_wall6"
+            android:layout_width="807dp"
+            android:layout_height="6dp"
+            android:layout_marginStart="32dp"
+            android:layout_marginTop="24dp"
+            android:scaleType="fitXY"
+            android:src="@mipmap/wall"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <android.support.constraint.ConstraintLayout
+            android:id="@+id/editor_constraintLayout_toolbarHolder"
+            android:layout_width="300dp"
+            android:layout_height="800dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <ImageView
+                android:id="@+id/editor_imageView_toolbarBackground"
+                android:layout_width="300dp"
+                android:layout_height="wrap_content"
+                android:scaleType="centerCrop"
+                android:src="@mipmap/blueprint"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <ListView
+                android:id="@+id/editor_listView_tools"
+                android:layout_width="253dp"
+                android:layout_height="708dp"
+                android:layout_marginEnd="8dp"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="8dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.516"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/editor_imageView_toolbarBackground" />
+        </android.support.constraint.ConstraintLayout>
+
+        <ImageView
             android:id="@+id/imageView5"
+            android:layout_width="45dp"
+            android:layout_height="42dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="5dp"
+            android:src="@mipmap/calibration"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/editor_textView_coord00"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:src="@mipmap/keepout"
-            tools:layout_editor_absoluteX="1067dp"
-            tools:layout_editor_absoluteY="90dp" />
+            android:layout_marginStart="52dp"
+            android:layout_marginTop="44dp"
+            android:text="(0,0)"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
     </android.support.constraint.ConstraintLayout>
 </FrameLayout>

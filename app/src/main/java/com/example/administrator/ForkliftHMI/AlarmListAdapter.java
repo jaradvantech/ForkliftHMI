@@ -61,8 +61,8 @@ public class AlarmListAdapter extends BaseAdapter {
         AlarmObject mAlarm = (AlarmObject) getItem(position);
 
 
-        titleTextView.setText(mContext.getString(R.string.Type_)+ " "  + mAlarm.getType());
-        subtitleTextView.setText(mContext.getString(R.string.Source_) + " "  + mAlarm.getSource());
+        titleTextView.setText(mAlarm.getType());
+        subtitleTextView.setText("Origen: "  + mAlarm.getSource());
         detailTextView.setText(mAlarm.getTime());
         thumbnailImageView.setImageResource(R.mipmap.alarm);
 

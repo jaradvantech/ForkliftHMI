@@ -49,7 +49,7 @@ public class SettingsListAdapter extends BaseAdapter {
         TextView value = (TextView) rowView.findViewById(R.id.settingsList_textView_value);
         if(mDataSource.get(position).address.equals("000.000.000.000")) {
             value.setTextColor(Color.parseColor("#ff0d00"));
-            value.setText("Not set");
+            value.setText("Sin definir");
         } else {
             value.setTextColor(Color.parseColor("#000000"));
             value.setText(mDataSource.get(position).toString());

@@ -77,7 +77,6 @@ public class Alarms extends Fragment {
         View view = inflater.inflate(R.layout.fragment_alarms, container, false);
 
         TextView textView_recent = (TextView) view.findViewById(R.id.alarms_textView_recent);
-        infoOutput = (TextView) view.findViewById(R.id.alarms_textView_output);
 
         /*LIST VIEW*****************************************/
         mListView = (ListView) view.findViewById(R.id.alarms_ListView);
@@ -124,25 +123,6 @@ public class Alarms extends Fragment {
         });
 
 
-        //User interaction: Select Alarm
-        mListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                try {
-                    AlarmObject selectedAlarm = theAlarms.get(position);
-                    infoOutput.setText("\n");
-                    infoOutput.append(getString(R.string.Alarmoftype) + " " + selectedAlarm.getType() + "\n");
-                    infoOutput.append(getString(R.string.Source) + " " + selectedAlarm.getSource() + "\n");
-                    infoOutput.append(getString(R.string.Raisedat) + " " + selectedAlarm.getTime() + "\n");
-                    String reason = getContext().getResources().getString(
-                            getContext().getResources().getIdentifier("alarm_" + selectedAlarm.getType(), "string", getContext().getPackageName()));
-                    infoOutput.append(getString(R.string.Reason) + " " + reason + "\n\n");
-                    infoOutput.append(getString(R.string.Longpresstodismiss));
-                } catch(Resources.NotFoundException exc) {
-                    Log.e("Alarms", exc.toString());
-                }
-            }
-        });
 
         //Easter egg: delete all alarms by clicking on "recent alarms"
         textView_recent.setOnClickListener(new View.OnClickListener() {
@@ -162,12 +142,31 @@ public class Alarms extends Fragment {
                 alarmLoopHandler.postDelayed(this, ALARM_CHECK_PERIOD);
             }
         };
-        autoUpdater.run();
+
+
+        createFakeAlarms();
+
         return view;
     }
+
     @Override
     public void onDetach() {
         super.onDetach();
+    }
+
+    public void createFakeAlarms() {
+        Calendar calendar = Calendar.getInstance();
+        SimpleDateFormat mdformat = new SimpleDateFormat("HH:mm:ss dd-MM-yy ");
+        String strDate = mdformat.format(calendar.getTime());
+
+        theAlarms.clear();
+        theAlarms.add(new AlarmObject("Batería baja (20%)", strDate, "Carretilla 1"));
+        theAlarms.add(new AlarmObject("Colisión en sensor frontal", strDate, "Carretilla 4"));
+        theAlarms.add(new AlarmObject("Revisar lubricación", strDate, "Carretilla 2"));
+        theAlarms.add(new AlarmObject("Batería baja (15%)", strDate, "Carretilla 1"));
+        theAlarms.add(new AlarmObject("Batería baja (10%)", strDate, "Carretilla 1"));
+
+        adapter.notifyDataSetChanged();
     }
 
     public void updateAlarms(ArrayList<AlarmObject> newAlarms){
